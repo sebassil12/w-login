@@ -1,6 +1,10 @@
 <div class="login-container">
 <div class="login-modal">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <div class="login-presentation">
+    <h1>Bienvenido a la aplicación</h1>
+    <p>Inicia sesión para continuar</p>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
     <div class="form-group">
       <label for="username">Usuario</label>
       <input
@@ -34,17 +38,15 @@
         Contraseña es requerida
       </span>
     </div>
-  
+  <div class="register-link">
+    <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+  </div>
     <button type="submit" [disabled]="loginForm.invalid || loading">
       {{ loading ? 'Ingresando...' : 'Iniciar sesión' }}
     </button>
   
     <span class="error" *ngIf="errorMessage">{{ errorMessage }}</span>
   </form>
-  <div class="login-presentation">
-    <h1>Bienvenido a la aplicación</h1>
-    <p>Inicia sesión para continuar</p>
-  </div>
 </div>
 
 </div>

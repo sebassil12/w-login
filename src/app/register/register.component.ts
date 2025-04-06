@@ -6,13 +6,17 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {
+export class RegisterComponent {
 
   loginForm = new FormGroup({
+    name: new FormControl('', {
+      validators: [Validators.required],
+      updateOn: 'blur',
+    }),
     username: new FormControl('', {
       validators: [Validators.required],
       updateOn: 'blur',
@@ -21,6 +25,11 @@ export class LoginComponent {
       validators: [Validators.required],
       updateOn: 'blur',
     }),
+    email: new FormControl('', {
+      validators: [Validators.required],
+      updateOn: 'blur',
+    }),
+
   });
 
   loading = false;
@@ -33,18 +42,7 @@ export class LoginComponent {
       this.errorMessage = '';
 
       const { username, password } = this.loginForm.value as { username: string; password: string };
-      this.authService.login(username, password).subscribe({
-        next: (response) => {
-          localStorage.setItem('token', response.access);
-          console.log(response) // Store token
-          this.router.navigate(['/dashboard']); // Redirect
-          this.loading = false;
-        },
-        error: (err) => {
-          this.errorMessage = err.message || 'Login failed';
-          this.loading = false;
-        },
-      });
+    
     }
   }
 }

@@ -11,9 +11,9 @@ export class AuthService {
   private apiUrl = 'https://test.willay.ai/cotizador/api/token/';
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<{ token: string }> {
+  login(username: string, password: string): Observable<{ access: string }> {
     // Mock API response (replace with real backend URL later)
-    return this.http.post<{ token: string }>(this.apiUrl, { username, password })
+    return this.http.post<{ access: string }>(this.apiUrl, { username, password })
     .pipe(catchError(this.handleError));
   }
 

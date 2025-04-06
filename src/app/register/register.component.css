@@ -17,7 +17,7 @@
     width: 1080px;
     max-width: 100%;
     min-height: 620px;
-    background: linear-gradient(to left, #b19570, #b17664);
+    background: linear-gradient(to right, #667296, #6476b1);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
@@ -107,7 +107,7 @@
 
   /* Adjust grid layout for smaller screens */
 @media (max-width: 768px) {
-    .login-modal {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
-    }
+  .login-modal {
+      grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
 }
