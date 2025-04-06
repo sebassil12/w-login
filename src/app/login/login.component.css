@@ -1,3 +1,5 @@
+/* This file contains the styles for the login component */
+
 .login-container {
     display: flex;
     align-items: center;
@@ -23,18 +25,19 @@
     grid-row-gap: 0px;
   }
 
+/*First Column*/
 .login-form {
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
     height: 100%;
   }
   
   .form-group {
     margin-bottom: 20px;
+    width: 80%;
   }
   
   label {
@@ -69,7 +72,7 @@
   
   button {
     background-color:#030303;
-    color: #fff;
+    color: #fff;;
     font-size: 12px;
     padding: 10px 45px;
     border: 1px solid transparent;
@@ -88,4 +91,16 @@
   
   button:hover:not(:disabled) {
     background: #2980b9;
+  }
+
+/*Presentation Login Styles*/
+
+  .login-presentation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    color: #fff;
+    padding: 20px;
   }

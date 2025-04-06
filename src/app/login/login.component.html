@@ -2,44 +2,49 @@
 <div class="login-modal">
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username">Usuario</label>
       <input
         id="username"
         type="text"
         formControlName="username"
-        placeholder="Enter username"
+        placeholder="Ingresa el usuario"
         [class.invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
       />
       <span
         class="error"
         *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
       >
-        Username is required
+        Usuario es requerido
       </span>
     </div>
   
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">Contraseña</label>
       <input
         id="password"
         type="password"
         formControlName="password"
-        placeholder="Enter password"
+        placeholder="Ingresa la contraseña"
         [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
       />
       <span
         class="error"
         *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
       >
-        Password must be at least 6 characters
+        Contraseña es requerida
       </span>
     </div>
   
     <button type="submit" [disabled]="loginForm.invalid || loading">
-      {{ loading ? 'Logging in...' : 'Login' }}
+      {{ loading ? 'Ingresando...' : 'Iniciar sesión' }}
     </button>
   
     <span class="error" *ngIf="errorMessage">{{ errorMessage }}</span>
   </form>
+  <div class="login-presentation">
+    <h1>Bienvenido a la aplicación</h1>
+    <p>Inicia sesión para continuar</p>
+  </div>
 </div>
+
 </div>
