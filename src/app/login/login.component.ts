@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-
+// Establish parameters that will be used in the login form
   loginForm = new FormGroup({
     username: new FormControl('', {
       validators: [Validators.required],
@@ -31,14 +31,20 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loading = true;
       this.errorMessage = '';
-
+      // Call the login method from AuthService that receives the username and password
       const { username, password } = this.loginForm.value as { username: string; password: string };
       this.authService.login(username, password).subscribe({
         next: (response) => {
-          localStorage.setItem('token', response.access);
-          console.log(response) // Store token
-          this.router.navigate(['/dashboard']); // Redirect
+          this.authService.setToken(response.access) //The token stored in local storage, the name of data is 'access'
+          const storedToken = this.authService.getToken();
+          if (storedToken){
+            this.router.navigate(['/home']); // Redirect to home page
+          } else{
+            console.log('Failed to store authentication token');
+            this.errorMessage = 'Failed to store authentication token';
+          }
           this.loading = false;
+          
         },
         error: (err) => {
           this.errorMessage = err.message || 'Login failed';
